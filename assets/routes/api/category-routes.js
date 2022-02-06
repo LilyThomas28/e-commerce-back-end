@@ -57,7 +57,7 @@ router.post('/', (req, res) => {
   })
   .then(CategoryData => {
     if(!CategoryData) {
-      res.status(404).json({message: "No categories"});
+      res.status(404).json({message: "Error to create category"});
       return;
     }
     res.json(CategoryData);
@@ -70,10 +70,42 @@ router.post('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a category by its `id` value
+  Category.update(req.body, {
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(CategoryData => {
+    if(!CategoryData) {
+      res.status(404).json({message: "No categories found with this id"});
+      return;
+    }
+    res.json(CategoryData);
+  })
+  .catch(err => {
+    res.status(500).json(err);
+    console.log(err);
+  })
 });
 
 router.delete('/:id', (req, res) => {
   // delete a category by its `id` value
+  Category.destroy({
+    where: {
+      id: req.params.is
+    }
+  })
+  .then(CategoryData => {
+    if(!CategoryData) {
+      res.status(404).json({message: "No categories found with this id"});
+      return;
+    }
+    res.json(CategoryData);
+  })
+  .catch(err => {
+    res.status(500).json(err);
+    console.log(err);
+  })
 });
 
 module.exports = router;
