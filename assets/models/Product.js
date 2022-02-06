@@ -13,6 +13,7 @@ Product.init(
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      primaryKey: true,
       validate: {
         isDecimal: true
       }
