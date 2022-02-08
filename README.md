@@ -31,4 +31,4 @@ THEN I am able to successfully create, update, and delete data in my database
 ```
 ## Walkthrough Video
 
-![video]()
+![video](https://watch.screencastify.com/v/f5xj7GJJOkpFfJAqBZ4m)
